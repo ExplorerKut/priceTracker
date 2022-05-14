@@ -19,3 +19,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           python3 test.py
+      - name: setup git config
+        run:  |
+          git config user.name ${{secrets.github_userName}}
+          git config user.email ${{secrets.github_userEmail}}
+      - name: commit changes
+        run:  |
+          git add -A
+          git commit -m "new file addition"
+          git push origin main+
