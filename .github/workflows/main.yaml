@@ -21,10 +21,10 @@ jobs:
           python3 test.py
       - name: setup git config
         run:  |
-          git config user.name ${{secrets.github_userName}}
-          git config user.email ${{secrets.github_userEmail}}
+          git --global config user.name ${{secrets.userName}}
+          git --global config user.email ${{secrets.userEmail}}
       - name: commit changes
         run:  |
           git add -A
           git commit -m "new file addition"
-          git push origin main+
+          git push origin main
