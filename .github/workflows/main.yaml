@@ -19,12 +19,17 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           python3 test.py
-      - name: setup git config
-        run:  |
-          git config --global user.name ${{secrets.userName}}
-          git config --global user.email ${{secrets.userEmail}}
-      - name: commit changes
-        run:  |
-          git add -A
-          git commit -m "new file addition"
-          git push origin main
+      - name: Git add and commit
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Automated Change
+          add_options: '-A'
+      # - name: setup git config
+      #   run:  |
+      #     git config --global user.name ${{secrets.userName}}
+      #     git config --global user.email ${{secrets.userEmail}}
+      # - name: commit changes
+      #   run:  |
+      #     git add -A
+      #     git commit -m "new file addition"
+      #     git push origin main
