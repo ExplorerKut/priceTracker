@@ -7,7 +7,6 @@ from os.path import exists,isdir
 import requests
 import re
 import pandas as pd
-from matplotlib import pyplot as pp
 from datetime import datetime
 url_desired_price=dict()
 product_name_list=list()
