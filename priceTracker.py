@@ -29,6 +29,7 @@ try:
             # print(key)
             # print(key)
             page=requests.get(key,headers=header)
+            print(page)
             # print(page)
             # print(datetime.now())
             request_time=datetime.timestamp(datetime.now())
@@ -36,6 +37,7 @@ try:
             # print(soup.prettify())
             # with open("priceTracker.html","w") as ft:
             #     ft.write(soup.prettify())
+            
             product_name=soup.find(id="productTitle").text.lstrip().rstrip().replace(" ","_")[0:15]
             product_price=soup.find("span",class_="a-price-whole").text
             product_price=re.sub('[^A-Za-z0-9]+', '', product_price)
