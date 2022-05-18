@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import os
+import shutil
 import plotly.express as px
 import plotly.graph_objects as go
 from os.path import exists,isdir
@@ -61,7 +62,10 @@ try:
         for file_name in check_csv_file:
             if file_name not in product_name_list:
                 os.remove("updates/"+file_name)
-
+        file_exists=isdir("graphs")
+        if file_exists:
+            shutil.rmtree("graphs")
+        os.mkdir("graphs")
         for csv in os.listdir('updates'):
             csv_file=pd.read_csv('updates/'+csv);
             csv_file['dateUpdated']=pd.to_datetime(csv_file['dateUpdated'],unit='s')
@@ -72,7 +76,8 @@ try:
             
             fig=px.line(csv_file,x="dateUpdated",y="price")
             # fig=go.Figure([go.Scatter(x=csv_file['dateUpdated'],y=csv_file['price'])])
-            fig.write_image(csv+".jpeg")
+            
+            fig.write_image("graphs/"+csv+".jpeg")
 
     except Exception as e:
         raise e
