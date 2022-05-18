@@ -34,7 +34,7 @@ try:
             # print(datetime.now())
             request_time=datetime.timestamp(datetime.now())
             soup=BeautifulSoup(page.content,"lxml")
-            # print(soup.prettify())
+            print(soup.prettify())
             # with open("priceTracker.html","w") as ft:
             #     ft.write(soup.prettify())
             
